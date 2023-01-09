@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta name="viewport" content="with=device-with, initial scale=1.0">
+        <title> Farmer Consumer Linkage Management System </title>
+    </head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <body>
+        <div class="banner">
+            <nav>
+            <div class="navbar" id="navbar">
+                <span>Ukulima Bora</span>
+                <div class="navlinks" id="navLinks">                
+                    <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
+                <ul>
+                    <li><a>Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login.html">Sign Up</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>                                                
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>
+            </div>
+            </nav>
+            <div class="content">
+                <h1>BUY AND SELL FARM PRODUCE</h1>
+                <P>Buy or Sell Farm produce in the click of a button</P>
+                <div>
+                    <button class="button">BUY</button>
+                    <button class="button">SELL</button>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Javascript for toggling the menu -->
+        <script>
+            var navbar = document.getElementById("navbar")
+            var navlinks= document.getElementById("navLinks")
+            function hideMenu(){
+                navlinks.style.right="-200px"
+            }
+            function showMenu(){
+                navlinks.style.right="0"
+            }
+        </script>
+    </body>
+</html>
