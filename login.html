@@ -14,13 +14,11 @@
            <form method="POST" action="/submittt" id="login" class="input-group">
             <div class="loginDiv">
             <input type="email" id="email" placeholder="Enter your Email address" name="email" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
-            <input type="password" id="password" placeholder="Enter your password" name="password" required class="input-box"><br>
+            <input type="password" id="password" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
             <p id="emailValidation"></p>
             <p id="passwordValidation"></p>
-               <a href="/signup.html">Don't have an account?</a><br>
-               <a href="/sadmin">Admin</a>
-               <a href="/forget">Forgot Password</a>
+               
                </div>
            </form>
            <form method="POST" action="/submit"  id="signup" class="input-group">
@@ -30,7 +28,6 @@
             <input type="password" id="password" placeholder="Enter your password" name="password" required class="input-box"><br>
             <input type="password" id="password" placeholder="Confirm your password" name="password" required class="input-box"><br>
             <input type="submit" id="submit" class="btn-submit"><br>
-            <a href="/index">Already have an account</a> <br>           
            </form>           
         </div>
       </div>
@@ -38,6 +35,7 @@
         var x= document.getElementById("login")
         var y= document.getElementById("signup")
         var z= document.getElementById("buttonz")
+        // functions to slide in between login and sign up pages
         function login(){
           x.style.left="50px";
           y.style.left="450px";
@@ -49,6 +47,7 @@
           z.style.left="110px"
   
         }
+        // functions to check Form Validation
         function formValidation(){
         var email = document.getElementById("email")
         console.log(email.value)
@@ -70,10 +69,16 @@
         logDiv.addEventListener("keyup",(e)=>{
           document.getElementById("emailValidation").textContent=""
         })
+        // functions to remove error messages when users type in their passwords
         function checkFormValidation(e){
           if (e.target.value.length > 0){
             if (e.target.id === "email"){
               document.getElementById("emailValidation").textContent=""
+            }
+          }
+          if(e.target.value.length >0){
+            if (e.target.id === "password"){
+              document.getElementById("passwordValidation").textContent=""
             }
           }
         }
