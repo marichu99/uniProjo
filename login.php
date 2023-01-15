@@ -11,7 +11,7 @@
               <button class="toggle-btn" onclick="login()">Login</button>
               <button class="toggle-btn" onclick="signup()">Signup</button>
             </div>
-           <form method="POST" action="/submittt" id="login" class="input-group">
+           <form method="POST" action="data.php" id="login" class="input-group">
             <div class="loginDiv">
             <input type="email" id="email" placeholder="Enter your Email address" name="email" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="password" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
@@ -21,7 +21,7 @@
                
                </div>
            </form>
-           <form method="POST" action="/submit"  id="signup" class="input-group">
+           <form method="POST" action="signup.php"  id="signup" class="input-group">
             <input type="text" id="first" placeholder="Enter your First Name" name="fname" class="input-box" required><br>
             <input type="text" id="last" placeholder="Enter your Last Name" name="lname" required class="input-box"><br>
             <input type="email" id="email" placeholder="Enter your Email address" name="email" required class="input-box"><br>
