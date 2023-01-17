@@ -24,10 +24,17 @@ $password = mysqli_real_escape_string($conn, $password);
 // select the database
 mysqli_select_db($conn, "farmer");
 
+// hash the password
+$password = password_hash($password, PASSWORD_DEFAULT);
+
 // query the database
 $sql="INSERT INTO users (FirstName,LastName,Email,Password) VALUES ('$fname','$lname','$email','$password')";
 
 $result = mysqli_query($conn, $sql);
+
+if(!$result){
+    die(mysqli_error($conn));
+}
 
 $rows = mysqli_affected_rows($conn);
 
@@ -40,6 +47,8 @@ function redirect($url){
 
 if ($rows>0){
     redirect(('/PROJO/index.html'));
+    // encode the data from the database and send it to the javascript frontend
+    echo json_encode($fname);
 }
 
 
