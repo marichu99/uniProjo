@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <meta name="viewport" content="with=device-with, initial scale=1.0">
@@ -14,8 +15,8 @@
                     <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
                 <ul>
                     <li><a>Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="login.html">Sign Up</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="login.php">Sign Up</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="about.html">About Us</a></li>
                 </ul>                                                
@@ -81,10 +82,10 @@
                     </div>
                 </div>
             </div>
-            <h1>Featured Farm Products</h1>
+            <h2>Search by Location</h2>
             <div class="prod_row">
                 <div class="prod_item">
-                    <img src="images/white_maize.jfif" class="image_prod"/><br/>
+                    <img src="images/uasin_gishu.jpg" class="image_prod"/><br/>
                     <span class="prodName">White Maize</span><br/>
                     <span class="prodLocation">Uasin Gishu</span><br/>
                     <span class="prodPrice">50 Shillings Per Kilo</span><br/>
@@ -93,8 +94,8 @@
                     </div>
                 </div>
                 <div class="prod_item">
-                    <img src="images/Yellow-beans.jpeg" class="image_prod"/>
-                    <span class="prodName">White Maize</span><br/>
+                    <img src="images/barley.jpg" class="image_prod"/>
+                    <span class="prodName">Barley</span><br/>
                     <span class="prodLocation">Uasin Gishu</span><br/>
                     <span class="prodPrice">50 Shillings Per Kilo</span><br/>
                     <div className="fpRating">
@@ -102,19 +103,19 @@
                     </div>
                 </div>
                 <div class="prod_item">
-                    <img src="images/white_wheat" class="image_prod"/>
-                    <span class="prodName">White Maize</span><br/>
-                    <span class="prodLocation">Uasin Gishu</span><br/>
+                    <img src="images/rice.jfif" class="image_prod"/>
+                    <span class="prodName">Rice</span><br/>
+                    <span class="prodLocation">Ahero</span><br/>
                     <span class="prodPrice">50 Shillings Per Kilo</span><br/>
                     <div className="fpRating">
                         <button class="prodBuy">Buy</button>
                     </div>
                 </div>
                 <div class="prod_item">
-                    <img src="images/white_wheat" class="image_prod"/>
-                    <span class="prodName">White Maize</span><br/>
-                    <span class="prodLocation">Uasin Gishu</span><br/>
-                    <span class="prodPrice">50 Shillings Per Kilo</span><br/>
+                    <img src="images/tomato.jpg" class="image_prod"/>
+                    <span class="prodName">Tomato GreenHouse</span><br/>
+                    <span class="prodLocation">Tharaka Nithi</span><br/>
+                    <span class="prodPrice">7,000 Kshs Per Crate</span><br/>
                     <div className="fpRating">
                         <button class="prodBuy">Buy</button>
                     </div>
@@ -129,7 +130,7 @@
             </div>
         </div>
         <!-- Javascript for toggling the menu -->
-        <script>
+        <script type="module">
             var navbar = document.getElementById("navbar")
             var navlinks= document.getElementById("navLinks")
             function hideMenu(){
@@ -138,6 +139,36 @@
             function showMenu(){
                 navlinks.style.right="0"
             }
+            // getting data from the PHP backend
+            // var xhr = new XMLHttpRequest()
+            // // use open method to initialize the GET XMLHttpRequest
+            // xhr.onreadystatechange = function (){
+            // // check the statuse of the XMLHttpRequest
+            // if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+            //     // get the data from the response
+            //     console.log(xhr.responseText)
+            //     var data = JSON.parse(xhr.responseText)
+            //     console.log(JSON.stringify(data))
+            //     alert(data)
+            // }
+            // }
+            // xhr.open("GET","data.php",true);
+            // xhr.setRequestHeader("Content-type","application/json")
+            // // send the request
+            // xhr.send()
+            
+                fetch("http://localhost/PROJO/data.php",{
+                    method:"GET",
+                    mode:"cors",
+                    headers:{"Content-type":"application/json"}
+                })
+                .then(res=>res.json())
+                .then((data)=>{
+                    console.log(data)
+                    var backen = document.getElementById("backen");
+                    backen.textContent=data
+                })
+            
         </script>
     </body>
 </html>
