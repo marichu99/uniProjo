@@ -1,5 +1,5 @@
 
-
+<php
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,6 +31,7 @@
             <input type="password" id="passwordSign" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="passwordRe" placeholder="Confirm your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
+            <p><a href="forgot.html">Forgot Password</a></p>
             <p id="firstSignValid"></p>
             <p id="specialCharacter"></p>
             <p id="lastSignValid"></p>
@@ -47,3 +48,4 @@
     </body>
     
 </html>
+?>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="dash.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"> 
+
+    <title>Admin Dashboard Panel</title>
+    </head>
+    <body>
+        <div class="navlets">
+
+            <!-- the div below is for the Sidebar Container -->
+
+            <nav class="navContainer">
+                <div class="logoName">
+                    <span class="logo_name">Ukulima Bora</span>
+                </div>
+                <div class="menu-items">
+                    <ul class="nav-links">
+                        <li><a href="#">
+                            <i class="uil uil-estate"></i>
+                            <span class="link-name">Dashboard</span>
+                        </a></li>
+                        <li><a href="#">
+                            <i class="uil uil-chart-line"></i>
+                            <span class="link-name">Analytics</span>
+                        </a></li>
+                        <li><a href="#">
+                            <i class="uil uil-adjust-circle"></i>
+                            <span class="link-name">Insights</span>
+                        </a></li>
+                        <li><a href="#">
+                            <i class="uil uil-ambulance"></i>
+                            <span class="link-name">Transport</span>
+                        </a></li>
+                        <li><a href="#">
+                            <i class="uil uil-plane-departure"></i>
+                            <span class="link-name">Dashboard</span>
+                        </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#">
+                            <i class="uil uil-signout"></i>
+                            <span class="link-name">Log out</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            
+            <!-- the div below is for the main content -->
+
+            <div class="dashboard">
+                <!-- div for the top level stuff -->
+                <div class ="top">
+                    <i class="uil uil-bars side-bar"></i>
+                    <div class="search-box">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="search here ..." class="input-box"/>
+                    </div>
+                </div>
+                <!-- div for the header content -->
+                <div class="header-deets">
+                    <div class="acc-details">
+                        <span class="acc-span-deets">Sold:</span>
+                    </div>
+                    <div class="acc-details">
+                        <span class="acc-span-deets">Bought:</span>
+                    </div>
+                    <div class="acc-details">
+                        <span class="acc-span-deets">Totals:</span>
+                    </div>
+                </div>
+                <div class="sectionDeets">
+                <h3>Recent Activity</h3>
+                </div>
+                <div class="recentContainer">
+                    <div class="recent">
+                        <span class="recentTitle">First Name</span>
+                        <span class="recenData">Martin</span>
+                        <span class="recenData">Amran</span>
+                        <span class="recenData">Martin</span>
+                        <span class="recenData">Martin</span>
+                    </div>
+                    <div class="recent">
+                        <span class="recentTitle">Last Name</span>
+                        <span class="recenData">Mabera</span>
+                        <span class="recenData">Bulle</span>
+                        <span class="recenData">Mabera</span>
+                        <span class="recenData">Mabera</span>
+                    </div>
+                    <div class="recent">
+                        <span class="recentTitle">Email</span>
+                        <span class="recenData">martinmaati31@gmail.com</span>
+                        <span class="recenData">leilamohammed@gmail.com</span>
+                        <span class="recenData">martinmaati31@gmail.com</span>
+                        <span class="recenData">martinmaati31@gmail.com</span>
+                    </div>
+                    <div class="recent">
+                        <span class="recentTitle">Phone</span>
+                        <span class="recenData">+254799692741</span>
+                        <span class="recenData">+254769556025</span>
+                        <span class="recenData">+254799692741</span>
+                        <span class="recenData">+254799692741</span>
+                    </div>
+                    <div class="recent">
+                        <span class="recentTitle">Date</span>
+                        <span class="recenData">2023-05-08</span>
+                        <span class="recenData">2023-05-08</span>
+                        <span class="recenData">2023-05-08</span>
+                        <span class="recenData">2023-05-08</span>
+
+                    </div>
+                </div>
+                <div class="meza">
+                    <table class="myTable">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                    </table>
+                </div>
+
+    
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            const body = document.querySelector("body")
+            var navContainer =body.querySelector(".navContainer")
+            var navlist=body.querySelector(".navlist")
+            // function to toggle the sidebar
+            var sidebar=body.querySelector(".side-bar")
+            // add the event listener
+            sidebar.addEventListener("click",()=>{
+                // navContainer.classList.toggle("navClose")
+            })
+        </script>
+    </body>
+</html>

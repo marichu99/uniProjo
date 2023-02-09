@@ -46,7 +46,7 @@ function redirect($url){
 }
 
 if ($rows>0){
-    redirect(('/PROJO/index.html'));
+    redirect(('/PROJO/'));
     // encode the data from the database and send it to the javascript frontend
     echo json_encode($fname);
 }

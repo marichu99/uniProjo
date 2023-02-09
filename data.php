@@ -14,12 +14,6 @@ if (isset($_POST["password"])) {
 
 }
 
-// prevent SQL INJECTION
-// $fname=stripcslashes($fname);
-// $lname=stripcslashes($lname);
-
-
-
 
 // connect to the database
 $conn = mysqli_connect("localhost", "root", "");

@@ -56,9 +56,9 @@
         var contAlphaNumeric= special.test(passwordSign.value)
         var passwordSignValid= document.getElementById("passwordSignValid")
         if(passwordSign.value.length < 5){
-        passwordSignValid.textContent="Please enter a password"
-        passwordSignValid.style.color="red"
-        truly_valid=false;
+          passwordSignValid.textContent="Please enter a password"
+          passwordSignValid.style.color="red"
+          truly_valid=false;
         // check for special characters
         }else if(passwordSign.value > 5 && contAlphaNumeric !== true){
             var specialCharacter= document.getElementById("specialCharacter")
