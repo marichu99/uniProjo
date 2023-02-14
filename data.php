@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ERROR | E_PARSE);
 // get the form data
 // $fname=$_POST['fname'];
@@ -21,7 +22,7 @@ $conn = mysqli_connect("localhost", "root", "");
 // $lname=mysqli_real_escape_string($conn,$lname);
 $email=mysqli_real_escape_string($conn,$email);
 $password = mysqli_real_escape_string($conn,$password);
-mysqli_select_db($conn,"farmer");
+mysqli_select_db($conn,"farmer"); 
 // query database
 function Redirect($url){
     header(("Location:" . $url));
@@ -68,16 +69,16 @@ if (is_array($row) && $verifyPass ==1 ){
     $_SESSION["Username"] = $row["FirstName"];
     $_SESSION["Password"] = $row["Password"];
 
-    $jsonData=json_encode(($this_Obj),JSON_UNESCAPED_UNICODE);
-    echo $jsonData;
+   echo $_SESSION["Username"];
 }else{
     echo '<script type= "text/javascript">';
-    echo 'window.location.href = "login.php";';
     echo 'alert("Invalid Username or Password");';    
+    echo 'window.location.href = "login.php";';
     echo '</script>';
 }
 if(isset($_SESSION["Username"])){
-    Redirect("/PROJO/index.html");
+    Redirect("/PROJO/index.php");
+    // echo $_SESSION["Username"];
 }
 
 

@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="forgot.css">
 </head>
 <body>
-    <div class="main">
+    <div class="main" >
         <div class="forgot">
             <h2 class="forgotText">Please enter your email at the textbox below</h2>
-            <div class="forgotBox">
+            <div class="forgotBox" >
                 <form class="form" action="forgot.php" method="POST">
-                <input type="text" placeholder="john@doe.com" name="forgot"/>
-                <input type="password" placeholder="Enter a new Password" name="new_pass" id="passwordSign" disabled/>
-                <input type="password" placeholder="Re-Enter your Password" name="new_pass_confirm" id="passwordRe" disabled/>
+                <input type="text" placeholder="john@doe.com" name="forgot"/><br/>
+                <input type="number" placeholder="Input OTP code sent to your email" disabled/><br/>
+                <input type="password" placeholder="Enter a new Password" name="new_pass" id="passwordSign" disabled/><br/>
+                <input type="password" placeholder="Re-Enter your Password" name="new_pass_confirm" id="passwordRe" disabled/><br/>
                 <input type="submit" value="submit" onclick="formValidation()">
                 </form>
             </div>

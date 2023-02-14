@@ -1,0 +1,92 @@
+.navbar{
+    width: 85%;
+    padding: 30px;
+    margin-left: 95px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.navbar span{
+    font-size: large;
+    padding: 20px;
+    font-weight: bold;
+    color: rgb(4, 8, 12);
+}
+.navbar ul li{
+    text-decoration: none;
+    display: inline;
+    padding: 20px;
+    font-weight: bold;
+    color: rgb(9, 16, 22);
+}
+.navbar ul li:hover{
+    background-color: brown;
+    transition: .5s;
+    border-radius: 20px;
+}
+.navbar ul li a:hover {
+    color: aliceblue;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: rgb(9, 16, 22);
+}
+.content{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: rgb(129, 158, 184);
+}
+.button{
+    width: 150px;
+    margin: 20px 10px;
+    padding: 15px 0;
+    border: 2px solid brown;
+    border-radius: 25px;
+    background: transparent;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(166, 201, 231);
+}
+nav .fa{
+    display: none;
+}
+@media(max-width :700px){
+    .navbar ul li{
+        display: block;
+    }
+    nav #bars{
+        display: block;
+        margin: 20px;
+        font-weight: bold;
+        padding: 15px;
+        color: aliceblue;
+        cursor: pointer;
+        font-size: 22px;
+    }
+    .navlinks{
+        position: absolute;
+        background-color: brown;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+        overflow: hidden;
+    }
+    nav #times{
+        display: block;
+        margin: 20px;
+        font-weight: bold;
+        padding: 15px;
+        color: aliceblue;
+        cursor: pointer;
+        font-size: 22px;
+    }
+}

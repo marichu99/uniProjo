@@ -30,14 +30,6 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 // query the database
 $sql="INSERT INTO users (FirstName,LastName,Email,Password) VALUES ('$fname','$lname','$email','$password')";
 
-$result = mysqli_query($conn, $sql);
-
-if(!$result){
-    die(mysqli_error($conn));
-}
-
-$rows = mysqli_affected_rows($conn);
-
 // function to redirect the header
 function redirect($url){
 
@@ -45,10 +37,23 @@ function redirect($url){
     exit();
 }
 
+// query the database
+$result = mysqli_query($conn, $sql);
+
+// check whether a user exists
+if(!$result){
+    $error = mysqli_error($conn);
+    redirect("Sign.php?error='User Already Exists'");
+}
+
+$rows = mysqli_affected_rows($conn);
+
+
+
+
 if ($rows>0){
-    redirect(('/PROJO/'));
+    redirect(('/PROJO/index.php'));
     // encode the data from the database and send it to the javascript frontend
-    echo json_encode($fname);
 }
 
 

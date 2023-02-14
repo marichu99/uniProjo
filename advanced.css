@@ -1,0 +1,45 @@
+.advanced{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 99, 99);
+    border-radius: 15px;
+    width: 25%;
+    height: 50%;
+    /* margin-top: 300px; */
+}
+.advanced form{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+   
+}
+.advanced form input{
+    padding: 10px 14px;
+    margin: 15px;
+    border-radius: 10px;;
+}
+.minmax{
+    display: flex;
+    flex-direction: row;
+}
+.advanced form span{
+    font-size: large;
+    color: white;
+}
+/* we are styling the plus and minus operators */
+.minmax p{
+    border-radius: 10px;
+    font-weight: 900;
+    font-style: normal;
+    color: white;
+    font-size: large;
+    text-transform: uppercase;
+    transition: transform .5s;
+    padding: 2px 5px;
+    height: 30px;
+    width: 15px;
+}
+.minmax p:hover{
+    transform: scale(1.1);
+}

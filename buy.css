@@ -1,0 +1,116 @@
+.farm_produce{
+    width: 60%;
+    padding-top: 10px;
+    text-align: center;
+    margin: auto;
+}
+.prod_row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+}
+/* .search_produce{
+    width: 80%;
+    border: 2px solid grey;
+    border-radius: 25px;
+    font-size: large;
+    font-weight: bold;
+    height: 50px;
+    text-align: center;
+} */
+.prod_item{
+    flex: 1;
+    gap: 10px;
+    padding: 0;
+    margin: 10px;
+    text-align: start;
+    transition: transform .5s;
+}
+.prod_item:hover{
+    transform: scale(1.1);
+}
+.image_prod{
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+}
+.prodName{
+    font-weight: bold;
+    font-size: 20px;
+}
+.prodLocation{
+    font-weight: 300;
+    font-size: 15px;
+    font-size: small;
+}
+.prodPrice{
+    font-weight: bold;
+    font-size: 15px;
+    color: dark-blue;
+}
+.farm_produce h1{
+    font-size: 50px;
+    font-weight: bold;
+    font-style: normal;
+    /* padding: 25px;
+    padding-bottom: 0; */
+}
+.searchContainer{
+    width: 75%;
+    height: 25px;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    border-radius: 15px;
+    border: 5px solid brown;
+    /* bottom: -100px; */
+    /* position: absolute; */
+    align-items: center;
+    margin: 40px;
+    margin-left: 165px;
+    background-color: white;
+}
+.searchItem{
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+.search_produce{
+    margin: 0;
+    text-align: center;
+    width: 250px;
+    height:60px;
+    border-left: 0.2px solid grey;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    
+    outline: none;
+    
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+.search_produce.first{
+    border-left: none;
+}
+.searchBtn{
+    height: 50px;
+    background-color: brown;
+    border: none;
+    border-radius: 10px;
+    width: 75px;
+    color: white;
+    font-weight: 500;
+}
+
+/* styling the advanced search and the main content */
+
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.advanced{
+    margin-top: 100px;
+}

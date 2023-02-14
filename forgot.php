@@ -5,17 +5,25 @@ if(isset($_POST["forgot"])){
 }
 // establish a database connection
 
-$conn=mysqli_connect("localhost","root","","farmer");
+$conn=mysqli_connect("localhost","root","",);
 
 // prevent sql injection
 $forgot = mysqli_real_escape_string($conn, $forgot);
+// connect to the specific database
+mysqli_select_db($conn,"farmer");
 
 // connect to the specific database
-// $valid=mysqli_select_db($conn,"farmer");
+
+
+// function meant for redirection
+function Redirect($url){
+    header(("Location:" . $url));
+    exit();
+}
 
 
 // query the database for the password according to the email passed
-$query = "select Password,Email from farmer where Email = '$forgot'";
+$query = "select Email from users where Email = '$forgot'";
 
 $res=mysqli_query($conn,$query) or die("Failed to fetch from db");
 
@@ -27,6 +35,7 @@ $email = $row["Email"];
 
 // compare the email passed with the email fetched from the database
 if ($email == $forgot){
+    Redirect("")
     print(json_encode($email));
 }else{
     print("User not found");

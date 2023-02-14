@@ -1,19 +1,5 @@
         
-        var x= document.getElementById("login")
-        var y= document.getElementById("signup")
-        var z= document.getElementById("buttonz")
-        // functions to slide in between login and sign up pages
-        function login(){
-          x.style.left="50px";
-          y.style.left="450px";
-          z.style.left="0px"
-        }
-        function signup(){
-          x.style.left="-400px";
-          y.style.left="50px";
-          z.style.left="110px"
-  
-        }
+      
         // functions to check Form Validation
         var truly_valid= true;
         function formValidation(){
@@ -127,42 +113,47 @@
           }
         }
 
-
-
-
-
-        function getBackenData(){
-        fetch("http://localhost/PROJO/data.php",{
-            method:"GET",
-            mode:"cors",
-            headers:{"Content-type":"application/json"}
-        })
-        .then(res=>res.json())
-        .then((data)=>{
-            console.log(data)
-            var backen = document.getElementById("backen");
-            backen.textContent=data
-        })
-    }
-        function getBackenData(){
-        var xhr = new XMLHttpRequest()
-        let params ="action=getBackenData"
-        // use open method to initialize the GET XMLHttpRequest
-        xhr.open("GET","data.php",true);
-        
-        xhr.onreadystatechange = function (){
-        // check the statuse of the XMLHttpRequest
-        if (xhr.readyState === 4 && xhr.status === 200){
-            // get the data from the response
-            console.log("marichu is best")
-            console.log(xhr.response)
-            var data = JSON.parse(xhr.responseText)
-            console.log("The type of data is ",typeof(data))
-            alert(data)
-          }
+        function signRedirect(){
+          window.location.href="http://localhost/PROJO/Sign.php"
         }
-        xhr.setRequestHeader("Content-Type","application/json")
-        // send the request
-        xhr.send(params)
-      }
+
+
+
+
+
+        // I WAS TRYING TO USE JS TO FETCH DATA FROM THE PHP BAKEND BUT WAS NOT SUCCESSFUL
+    //     function getBackenData(){
+    //     fetch("http://localhost/PROJO/data.php",{
+    //         method:"GET",
+    //         mode:"cors",
+    //         headers:{"Content-type":"application/json"}
+    //     })
+    //     .then(res=>res.json())
+    //     .then((data)=>{
+    //         console.log(data)
+    //         var backen = document.getElementById("backen");
+    //         backen.textContent=data
+    //     })
+    // }
+    //     function getBackenData(){
+    //     var xhr = new XMLHttpRequest()
+    //     let params ="action=getBackenData"
+    //     // use open method to initialize the GET XMLHttpRequest
+    //     xhr.open("GET","data.php",true);
+        
+    //     xhr.onreadystatechange = function (){
+    //     // check the statuse of the XMLHttpRequest
+    //     if (xhr.readyState === 4 && xhr.status === 200){
+    //         // get the data from the response
+    //         console.log("marichu is best")
+    //         console.log(xhr.response)
+    //         var data = JSON.parse(xhr.responseText)
+    //         console.log("The type of data is ",typeof(data))
+    //         alert(data)
+    //       }
+    //     }
+    //     xhr.setRequestHeader("Content-Type","application/json")
+    //     // send the request
+    //     xhr.send(params)
+    //   }
             

@@ -1,4 +1,8 @@
 
+<?php 
+    session_start();
+?>
+
 <html>
     <head>
         <meta name="viewport" content="with=device-with, initial scale=1.0">
@@ -8,40 +12,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <body>
         <div class="banner">
-            <nav>
+            <!-- <nav>
             <div class="navbar" id="navbar">
-                <span>Ukulima Bora</span>
+                <span>Welcome <?php echo $_SESSION["Username"]?></span>
                 <div class="navlinks" id="navLinks">                
                     <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
                 <ul>
                     <li><a>Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="login.html">Sign Up</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="Sign.php">Sign Up</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="about.html">About Us</a></li>
                 </ul>                                                
                 </div>
                 <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>
             </div>
-            </nav>
+            </nav> -->
+            <?php 
+                include "nav/nav.php";
+            ?>
             <div class="content">
                 <h1>BUY AND SELL FARM PRODUCE</h1>
                 <P>Buy or Sell Farm produce in the click of a button</P>
                 <div>
-                    <button class="button">BUY</button>
+                    <button class="button" onclick="window.location.href='buy.php'">BUY</button>
                     <button class="button">SELL</button>
                 </div>
             </div>
             
         </div>
-        <div class="searchContainer">
-            <div class="searchItem">
-                <input type="text" placeholder="Search Produce" class="search_produce"/>
-            </div>
-            <div class="searchItem">
-                <input type="text" placeholder="Search Location" class="search_produce"/>
-            </div>
-        </div>
+     
         <section class="farm_produce">
             <h1>Featured Farm Products</h1>
             <div class="prod_row">
@@ -129,6 +129,7 @@
                 <p>All Rights Reserved @ 2023</p>
             </div>
         </div>
+        <script src="login.js" type="text/javascript"></script>
         <!-- Javascript for toggling the menu -->
         <script type="module">
             var navbar = document.getElementById("navbar")
