@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(250, 226, 230);
+}
 .farm_produce{
     width: 60%;
     padding-top: 10px;
@@ -31,8 +34,8 @@
     transform: scale(1.1);
 }
 .image_prod{
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    height: 150px;
     border-radius: 20px;
 }
 .prodName{

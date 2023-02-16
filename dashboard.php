@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head lang="en">
@@ -31,20 +35,20 @@
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-adjust-circle"></i>
-                            <span class="link-name">Insights</span>
+                            <span class="link-name" onclick="window.location.href='adminSignUp.php'">Add Admin </span>
                         </a></li>
                         <li><a href="#">
-                            <i class="uil uil-ambulance"></i>
-                            <span class="link-name">Transport</span>
+                            <i class="uil uil-user-circle"></i>
+                            <span class="link-name" onclick="window.location.href='Sign.php'">Add User</span>
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-plane-departure"></i>
-                            <span class="link-name">Dashboard</span>
+                            <span class="link-name">Passwords</span>
                         </a></li>
                     </ul>
 
                     <ul>
-                        <li><a href="#">
+                        <li><a href="adminLogout.php">
                             <i class="uil uil-signout"></i>
                             <span class="link-name">Log out</span>
                         </a></li>
@@ -60,8 +64,8 @@
                 <div class ="top">
                     <i class="uil uil-bars side-bar"></i>
                     <div class="search-box">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="search here ..." class="input-box"/>
+                    <i class="uil uil-user-circle"></i>
+                    <span><?php echo $_SESSION["Username"];?></span>
                     </div>
                 </div>
                 <!-- div for the header content -->
@@ -80,44 +84,38 @@
                 <h3>Recent Activity</h3>
                 </div>
                 <div class="recentContainer">
-                    <div class="recent">
-                        <span class="recentTitle">First Name</span>
-                        <span class="recenData">Martin</span>
-                        <span class="recenData">Amran</span>
-                        <span class="recenData">Martin</span>
-                        <span class="recenData">Martin</span>
-                    </div>
-                    <div class="recent">
-                        <span class="recentTitle">Last Name</span>
-                        <span class="recenData">Mabera</span>
-                        <span class="recenData">Bulle</span>
-                        <span class="recenData">Mabera</span>
-                        <span class="recenData">Mabera</span>
-                    </div>
-                    <div class="recent">
-                        <span class="recentTitle">Email</span>
-                        <span class="recenData">martinmaati31@gmail.com</span>
-                        <span class="recenData">leilamohammed@gmail.com</span>
-                        <span class="recenData">martinmaati31@gmail.com</span>
-                        <span class="recenData">martinmaati31@gmail.com</span>
-                    </div>
-                    <div class="recent">
-                        <span class="recentTitle">Phone</span>
-                        <span class="recenData">+254799692741</span>
-                        <span class="recenData">+254769556025</span>
-                        <span class="recenData">+254799692741</span>
-                        <span class="recenData">+254799692741</span>
-                    </div>
-                    <div class="recent">
-                        <span class="recentTitle">Date</span>
-                        <span class="recenData">2023-05-08</span>
-                        <span class="recenData">2023-05-08</span>
-                        <span class="recenData">2023-05-08</span>
-                        <span class="recenData">2023-05-08</span>
-
-                    </div>
+                <table class="myTable">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                    </table>
                 </div>
-                <div class="meza">
+                <div class="recentContainer">
                     <table class="myTable">
                             <tr>
                                 <th>First Name</th>

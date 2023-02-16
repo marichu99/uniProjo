@@ -35,7 +35,7 @@ $email = $row["Email"];
 
 // compare the email passed with the email fetched from the database
 if ($email == $forgot){
-    Redirect("")
+    Redirect("");
     print(json_encode($email));
 }else{
     print("User not found");

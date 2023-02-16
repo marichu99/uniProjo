@@ -137,7 +137,7 @@ i{
     align-items: center;
     flex-direction: row;
     margin: 25px;
-    padding: 10px 14px;
+    padding: 10px 15px;
 }
 .recentTitle{
     font-weight: bold;
@@ -164,4 +164,10 @@ i{
 }
 .myTable{
     width: 100%;
+}
+.myTable td{
+    text-align: left;    
+}
+.myTable th{
+    text-align: left;
 }

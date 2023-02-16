@@ -12,31 +12,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <body>
         <div class="banner">
-            <!-- <nav>
-            <div class="navbar" id="navbar">
-                <span>Welcome <?php echo $_SESSION["Username"]?></span>
-                <div class="navlinks" id="navLinks">                
-                    <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
-                <ul>
-                    <li><a>Home</a></li>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="Sign.php">Sign Up</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                </ul>                                                
-                </div>
-                <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>
-            </div>
-            </nav> -->
+           
             <?php 
-                include "nav/nav.php";
+                include "nav.php";
             ?>
             <div class="content">
                 <h1>BUY AND SELL FARM PRODUCE</h1>
                 <P>Buy or Sell Farm produce in the click of a button</P>
                 <div>
                     <button class="button" onclick="window.location.href='buy.php'">BUY</button>
-                    <button class="button">SELL</button>
+                    <button class="button" onclick="window.location.href='sell.php'">SELL</button>
                 </div>
             </div>
             
@@ -122,13 +107,12 @@
                 </div>
             </div>
             
-
+        
         </section>
-        <div class="footer">
-            <div class="flists">
-                <p>All Rights Reserved @ 2023</p>
-            </div>
+        <div class="foot">
+            <?php include "footer.php"?>
         </div>
+        
         <script src="login.js" type="text/javascript"></script>
         <!-- Javascript for toggling the menu -->
         <script type="module">
@@ -171,5 +155,6 @@
                 })
             
         </script>
+       
     </body>
 </html>

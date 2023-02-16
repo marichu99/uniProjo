@@ -29,7 +29,7 @@ function Redirect($url){
 
 // hash the input password
 $passHash = password_hash($password, PASSWORD_DEFAULT);
-$sql = "select * from users where Email = '$email'";
+$sql = "select * from admin where Email = '$email'";
 // query the database
 $result = mysqli_query($conn,$sql) or die("Failed to Fetch from DB");
 $row = mysqli_fetch_array(($result));
@@ -69,13 +69,13 @@ if (is_array($row) && $verifyPass ==1 ){
 
    echo $_SESSION["Username"];
    if(isset($_SESSION["Username"])){
-    Redirect("/PROJO/index.php");
+    Redirect("/PROJO/dashboard.php");
     // echo $_SESSION["Username"];
 }
 }else{
     echo '<script type= "text/javascript">';
     echo 'alert("Invalid Username or Password");';    
-    echo 'window.location.href = "login.php";';
+    echo 'window.location.href = "adminLogin.php";';
     echo '</script>';
 }
 

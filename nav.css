@@ -13,6 +13,8 @@
     padding: 20px;
     font-weight: bold;
     color: rgb(4, 8, 12);
+    border-radius: 10px;
+    background-color: rgb(199, 253, 253);
 }
 .navbar ul li{
     text-decoration: none;
@@ -32,6 +34,9 @@
 .navbar ul li a{
     text-decoration: none;
     color: rgb(9, 16, 22);
+}
+.navbar ul li a i{
+    font-size: larger;
 }
 .content{
     width: 100%;
