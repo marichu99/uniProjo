@@ -1,6 +1,7 @@
 
 <?php 
     session_start();
+    
 ?>
 
 <html>
@@ -20,8 +21,11 @@
                 <h1>BUY AND SELL FARM PRODUCE</h1>
                 <P>Buy or Sell Farm produce in the click of a button</P>
                 <div>
-                    <button class="button" onclick="window.location.href='buy.php'">BUY</button>
-                    <button class="button" onclick="window.location.href='sell.php'">SELL</button>
+                    
+                    <input type="submit" class="button" onclick="window.location.href='buy.php'" value="BUY" name="buy"/>
+                    <input type="submit" class="button" onclick="window.location.href='sell.php'" value="SELL" name="sell"/>
+                    
+                    
                 </div>
             </div>
             

@@ -1,4 +1,6 @@
 <?php 
+
+    session_start();
     if(isset($_POST["prodName"])){
         $prodName=$_POST["prodName"];
         $prodName=stripcslashes($prodName);
@@ -52,16 +54,33 @@
     function redirect($url){
         header("Location:".$url);
     }
+        
+        
 
     // check for errors when posting the data to the backend
     if(!$query){
         $error=mysqli_error($conn);
         echo "The error is ".$error;
     }else{
-        echo '<script type= "text/javascript">';
-        echo 'alert("You Have Added a Product");';    
-        echo 'window.location.href = "index.php";';
-        echo '</script>';
+        // update the farmer table
+        $username=$_SESSION["Username"];
+        $addquery="select * from users where FirstName = '$username'";
+        $result=mysqli_query($conn,$addquery);
+        $rows=mysqli_fetch_assoc($result);
+        $email=$rows["Email"];
+
+        // get the productID from the updated DBase
+        $prodID="select productID from products where productName= '$prodName' and  productDescription = '$prodDescription' and productImg= '$prodImg'";
+        $prodQuery=mysqli_query($conn,$prodID);
+        $prod=mysqli_fetch_assoc($prodQuery);
+        $insertQ="INSERT INTO farmer (farmerID,farmerName,farmLocation,productID) VALUES('$email','$username','$prodLocation','$prod')";
+        $insertRes=mysqli_query($conn,$insertQ);
+        if($insertRes){
+            echo '<script type= "text/javascript">';
+            echo 'alert("You Have Added a Product");';    
+            echo 'window.location.href = "index.php";';
+            echo '</script>';
+        }
     }
 
 

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $buttonclicked="None";
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@
                 <div class="logoName">
                     <span class="logo_name">Ukulima Bora</span>
                 </div>
+                <form method="post">
                 <div class="menu-items">
                     <ul class="nav-links">
                         <li><a href="#">
@@ -35,7 +37,7 @@
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-adjust-circle"></i>
-                            <span class="link-name" onclick="window.location.href='adminSignUp.php'">Add Admin </span>
+                            <input type="submit" class="link-name" onclick="" value ="Add Admin" />
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-user-circle"></i>
@@ -54,6 +56,7 @@
                         </a></li>
                     </ul>
                 </div>
+                </form>
             </nav>
 
             
@@ -69,84 +72,13 @@
                     </div>
                 </div>
                 <!-- div for the header content -->
-                <div class="header-deets">
-                    <div class="acc-details">
-                        <span class="acc-span-deets">Sold:</span>
-                    </div>
-                    <div class="acc-details">
-                        <span class="acc-span-deets">Bought:</span>
-                    </div>
-                    <div class="acc-details">
-                        <span class="acc-span-deets">Totals:</span>
-                    </div>
-                </div>
-                <div class="sectionDeets">
-                <h3>Recent Activity</h3>
-                </div>
-                <div class="recentContainer">
-                <table class="myTable">
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Date</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                    </table>
-                </div>
-                <div class="recentContainer">
-                    <table class="myTable">
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Date</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                    </table>
-                </div>
+                <?php 
+
+                    if(isset($_SESSION["Username"])){
+                        echo $buttonclicked;
+                        include("dashmain.html");
+                    }
+                ?>
 
     
             </div>

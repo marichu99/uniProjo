@@ -3,25 +3,141 @@
     session_start();
     $conn=mysqli_connect("localhost","root","");
     mysqli_select_db($conn,"farmer");
-    if(isset($_GET["prodName"])){
-        $prodName=$_GET["prodName"];
-        $prodName=stripcslashes($prodName);
-        $prodName=mysqli_real_escape_string($conn,$prodName);
+    $arr_results=array();
+    if(isset($_POST["submit"])){
+        // search using product name only
+        if(isset($_POST["prodName"]) && strlen($_POST["prodLocation"])<1 && strlen($_POST["prodQuantity"])<1){
+            $prodName=$_POST["prodName"];
+            $prodName=stripcslashes($prodName);
+            $prodName=mysqli_real_escape_string($conn,$prodName);
+            $query="select * from products where productName='$prodName'";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodName;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+            
+        }
+        // search using product name and product Location only
+        if(strlen($_POST["prodName"])>1 && strlen($_POST["prodLocation"])>1 && strlen($_POST["prodQuantity"])<1){
+            $prodName=$_POST["prodName"];
+            $prodName=stripcslashes($prodName);
+            $prodName=mysqli_real_escape_string($conn,$prodName);
+            $prodLocation=$_POST["prodLocation"];
+            $prodLocation=stripcslashes($prodLocation);
+            $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
+            $query="select * from products where productName='$prodName' and productLocation like '%$prodLocation%' ";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodName;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+            
+        }
+        // search using product name and product quantity only
+        if(isset($_POST["prodName"]) && strlen($_POST["prodLocation"])<1 && strlen($_POST["prodQuantity"])>1){
+            $prodName=$_POST["prodName"];
+            $prodName=stripcslashes($prodName);
+            $prodName=mysqli_real_escape_string($conn,$prodName);
+            $prodQuantity=$_POST["prodQuantity"];
+            $prodQuantity=stripcslashes($prodQuantity);
+            $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
+            $query="select * from products where productName='$prodName' and productQuantity >='$prodQuantity-10' and productQuantity <='$prodQuantity+10'";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodName;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+            
+        }
+        // search using product location and product quantity only
+        if(strlen($_POST["prodName"])<1 && strlen($_POST["prodLocation"])>1 && strlen($_POST["prodQuantity"])>1){
+            $prodLocation=$_POST["prodLocation"];
+            $prodLocation=stripcslashes($prodLocation);
+            $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
+            $prodQuantity=$_POST["prodQuantity"];
+            $prodQuantity=stripcslashes($prodQuantity);
+            $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
+            $query="select * from products where productLocation like '%$prodLocation%' and productQuantity='$prodQuantity' ";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodName;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+            
+        }
+        // search using product location only
+        if(isset($_POST["prodLocation"]) && strlen($_POST["prodName"])<1 && strlen($_POST["prodQuantity"])<1){
+            $prodLocation=$_POST["prodLocation"];
+            $prodLocation=stripcslashes($prodLocation);
+            $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
+            $query="select * from products where productLocation like '%$prodLocation%'";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodLocation;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+
+        }
+        // search using product Quantity only
+        if(isset($_POST["prodQuantity"]) && strlen($_POST["prodLocation"])<1 && strlen($_POST["prodName"])<1){
+            $prodQuantity=$_POST["prodQuantity"];
+            $prodQuantity=stripcslashes($prodQuantity);
+            $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
+            $query="select * from products where productQuantity >='$prodQuantity-10' and productQuantity <='$prodQuantity+10'";
+            $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+            echo $prodQuantity;
+            $numResult=mysqli_num_rows($result);
+            echo $numResult;
+            while($rows= mysqli_fetch_assoc ($result)){
+                array_push($arr_results,$rows);
+                print_r($arr_results);
+            }
+
+        }
+        // search using all
+        if(isset($_POST["prodName"]) && isset($_POST["prodLocation"]) && isset($_POST["prodQuantity"])){
+            echo "All are set";
+            if(strlen($_POST["prodName"])>1 && strlen($_POST["prodLocation"])>1 && strlen($_POST["prodQuantity"])>1){
+                
+                $prodName=$_POST["prodName"];
+                $prodName=stripcslashes($prodName);
+                $prodName=mysqli_real_escape_string($conn,$prodName);
+                $prodLocation=$_POST["prodLocation"];
+                $prodLocation=stripcslashes($prodLocation);
+                $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
+                $prodQuantity=$_POST["prodQuantity"];
+                $prodQuantity=stripcslashes($prodQuantity);
+                $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
+                $query="select * from products where productName='$prodName' and productLocation like '%$prodLocation%' and productQuantity='$prodQuantity' ";
+                $all_products="select * from products";
+                $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
+                echo $prodQuantity;
+                $numResult=mysqli_num_rows($result);
+                echo $numResult;
+                while($rows= mysqli_fetch_assoc ($result)){
+                    array_push($arr_results,$rows);
+                    print_r($arr_results);
+                }
+            }
+        }
     }
-    if(isset($_GET["prodLocation"])){
-        $prodLocation=$_GET["prodLocation"];
-        $prodLocation=stripcslashes($prodLocation);
-        $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
-    }
-    if(isset($_GET["prodQuantity"])){
-        $prodQuantity=$_GET["prodQuantity"];
-        $prodQuantity=stripcslashes($prodQuantity);
-        $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
-    }
-    if(isset($prodName,$prodLocation,$prodQuantity)){
-    $query="select * from products where productName='$prodName' and productLocation like '%$prodLocation%' and productQuantity='$prodQuantity' ";
-    $result=mysqli_query($conn,$query);
-    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +150,9 @@
 </head>
 <body>
         <div class ="nav-back">
-            <?php 
-                include "nav.php";
-            ?>
-            <form action="" method="get">
+           <?php  include("nav.php")?>
+            
+            <form  method="post">
             <div class="searchContainer">
                 
                 <div class="searchItem">
@@ -49,7 +164,7 @@
                 <div class="searchItem">
                     <input type="text" placeholder="Quantity in Kilos" class="search_produce" name="prodQuantity"/>
                 </div>
-                <input class="searchBtn" type="submit" value="Search">
+                <input class="searchBtn" type="submit" name="submit" value="Search">
              </div>
             </form>
         </div>
@@ -57,60 +172,54 @@
         <div class="main">
 
             <div class="advanced">
-                <?php 
-                  include "advanced.php";
-                ?>
+                <!-- below here is the div for the advanced search -->
+            <div class="advanced">
+                <form action="search.php" method="get">
+                    <span>Search by produce</span>
+                    <input type="text" placeholder="E.g. maize" name="product">
+                    <span>Search by location</span>
+                    <input type="text" placeholder="E.g. Homa Bay..." name="location">
+                    <span>Quantity in Kilos</span>
+                    <input type="number" placeholder="E.g. 90 Kilos" name="quantity">
+                    <span>Minimum Price</span>
+                    <div class="minmax">            
+                    <p class="plus" onclick="addMinus(types='add')">+</p><input type="number" placeholder="Enter Min Price" name="minPrice" id="minPrice"><p class="minus" onclick="addMinus('minus')">-</p>
+                    </div>
+                    <span>Maximum Price</span>
+                    <div class="minmax">
+                    <p class="plus">+</p><input type="number" placeholder="Enter Max Price" name="maxPrice" id="maxPrice"><p class="minus">-</p>
+                    </div>
+                    <input type="submit" value="Apply Filters"/>
+             </div>
             </div>
             <section class="farm_produce">        
                 <h1>Featured Farm Products</h1>
                 <div class="prod_row">
                     <?php
-                        $search=false;
-                        if(isset($result)) {
-                        while($rows=mysqli_fetch_assoc($result)){
-                            $search=true;
-                        }
-                    }
-                   
-                    if($search==false){
-                    echo '<div class="prod_item">';
-                        echo '<img src="images/white_maize.jfif" class="image_prod"/><br/>';
-                        echo '<span class="prodName">White Maize</span><br/>';
-                        echo '<span class="prodLocation">Uasin Gishu</span><br/>';
-                        echo '<span class="prodPrice">50 Shillings Per Kilo</span><br/>';
-                        echo '<div className="fpRating">';
-                        echo    '<button class="prodBuy">Buy</button>';
-                        echo '</div>';
-                    echo '</div>';
-                    echo '<div class="prod_item">';
-                        echo '<img src="images/Yellow-beans.jpeg" class="image_prod"/>';
-                        echo '<span class="prodName">White Maize</span><br/>';
-                        echo '<span class="prodLocation">Uasin Gishu</span><br/>';
-                        echo '<span class="prodPrice">50 Shillings Per Kilo</span><br/>';
-                        echo '<div className="fpRating">';
-                            echo '<button class="prodBuy">Buy</button>';
-                        echo '</div>';
-                    echo '</div>';
-                    echo '<div class="prod_item">';
-                    echo '<img src="images/white_wheat" class="image_prod"/>';
-                        echo '<span class="prodName">White Maize</span><br/>';
-                        echo '<span class="prodLocation">Uasin Gishu</span><br/>';
-                        echo '<span class="prodPrice">50 Shillings Per Kilo</span><br/>';
-                        echo '<div className="fpRating">';
-                            echo '<button class="prodBuy">Buy</button>';
-                        echo '</div>';
-                    echo '</div>';
-                    echo '<div class="prod_item">';
-                        echo '<img src="images/white_wheat" class="image_prod"/>';
-                        echo '<span class="prodName">White Maize</span><br/>';
-                        echo '<span class="prodLocation">Uasin Gishu</span><br/>';
-                        echo '<span class="prodPrice">50 Shillings Per Kilo</span><br/>';
-                        echo '<div className="fpRating">';
-                            echo '<button class="prodBuy">Buy</button>';
-                        echo '</div>';
-                    echo '</div>';
-                    }
+                        $iterations=0;
+                        if(isset($result)){
+                            if($numResult>0){
+                            while($iterations<$numResult){
+                          
                     ?>
+                     <div class="prod_item">
+                        <span><?php print_r($rows);?></span>
+                         <img src='images/<?php echo $arr_results[$iterations]["productImg"];?>' class="image_prod"/><br/>
+                         <span class="prodName"><?php echo $arr_results[$iterations]["productName"];?></span><br/>
+                         <span class="prodLocation"><?php echo $arr_results[$iterations]["productLocation"]; ?></span><br/>
+                         <span class="prodPrice"><?php echo $arr_results[$iterations]["productPrice"]."Per Kilogram";?></span><br/>
+                         <div className="fpRating">
+                            <button class="prodBuy">Buy</button>
+                         </div>
+                     </div>
+                     <?php
+                        $iterations=$iterations+1;
+                            }
+                        }
+                    }                     
+                    
+                    ?>
+                
                 </div>
                 <h2>Search by Location</h2>
                 <div class="prod_row">
@@ -271,5 +380,28 @@
         <div class="foot">
             <?php include "footer.php"?>
         </div>
+        <script type="text/javascript">
+            // get the input fields with minimum price and maximum price
+            var minPrices= document.getElementById("minPrice");
+            var maxPrices=document.getElementById("maxPrice");
+            var i =1;
+            function addMinus(types){
+                if(types === "add"){
+                   console.log(i+i)
+                   minPrices.value=parseFloat(5)
+                   console.log(minPrices.value+parseFloat(1+1))
+                }
+                else if(types === "minus"){
+                    if (parseInt(minPrice.value-1)<1){
+                        var minuss= document.querySelector(".minus")
+                        minuss.disabled=true;
+                    }else{
+                        console.log("hey")
+                        console.log(parseInt(minPrices.value-1));
+                        minPrices.value=minPrices.value-1;
+                    }
+                }
+            }
+        </script>
 </body>
 </html>

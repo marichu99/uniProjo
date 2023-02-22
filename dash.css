@@ -38,7 +38,7 @@ body{
     left: 20px;
 }
 .menu-items{
-    top: 30px;
+    top: 60px;
     /* background-color: rgb(253, 180, 180); */
     border-radius: 20px;
     height: calc(100vh - 75px);
@@ -66,6 +66,9 @@ body{
     font-size: large;
     color: black;
     font-weight: bold;
+    outline: none;
+    border: none;
+    background: none;
 }
 i{
     font-size: 24px;
@@ -170,4 +173,7 @@ i{
 }
 .myTable th{
     text-align: left;
+}
+.navContainer{
+    width: 20%;
 }

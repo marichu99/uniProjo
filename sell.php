@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +45,7 @@
                         </div>
                         
             </div>
-            <input type="submit" value="Submit" class="submit">
+            <input type="submit" value="Submit" class="submit" name="sell"/>
         </form>
         <div class="payDeets">
 
