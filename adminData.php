@@ -40,7 +40,7 @@ $dbpass = $row["Password"];
 
 // echo implode($row);
 // echo $dbpass;
-$verifyPass = password_verify($password, $dbpass);
+$verifyPass = password_verify($password,$dbpass);
 
 echo $verifyPass;
 
@@ -78,10 +78,5 @@ if (is_array($row) && $verifyPass ==1 ){
     echo 'window.location.href = "adminLogin.php";';
     echo '</script>';
 }
-
-
-
-
-
 ?>
 

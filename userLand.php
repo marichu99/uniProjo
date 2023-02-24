@@ -14,9 +14,26 @@
     <body>
         <div class="banner">
            
-            <?php 
-                include "nav.php";
-            ?>
+        <nav>
+            <div class="navbar" id="navbar">
+                <span><i class="uil uil-user-circle"></i> <?php if (isset($_SESSION["Username"])){
+                                                                    echo $_SESSION["Username"];
+                                                                }else{
+                                                                    echo "Welcome";}?></span>
+                <div class="navlinks" id="navLinks">                
+                    <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="buy.php">Products</a></li>
+                    <li><a href="Sign.php">My Profile</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="logout.php"><i class="uil uil-signout"> <span>Log Out</span></a></i></li>
+                </ul>                                                
+                </div>
+                <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>
+            </div>
+        </nav>
             <div class="content">
                 <h1>BUY AND SELL FARM PRODUCE</h1>
                 <P>Buy or Sell Farm produce in the click of a button</P>
@@ -116,6 +133,7 @@
         <div class="foot">
             <?php include "footer.php"?>
         </div>
+        
         <script src="login.js" type="text/javascript"></script>
         <!-- Javascript for toggling the menu -->
         <script type="module">
@@ -127,6 +145,7 @@
             function showMenu(){
                 navlinks.style.right="0"
             }
+        
             
                 fetch("http://localhost/PROJO/data.php",{
                     method:"GET",

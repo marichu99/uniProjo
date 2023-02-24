@@ -21,6 +21,7 @@
             <input type="password" id="passwordSign" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="passwordRe" placeholder="Confirm your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
+            <span><a href="login.php">Login</a></span>
             <?php 
                 if (isset($_GET["error"])){
                 $error=$_GET["error"];

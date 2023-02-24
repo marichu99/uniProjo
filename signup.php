@@ -52,7 +52,10 @@ $rows = mysqli_affected_rows($conn);
 
 
 if ($rows>0){
-    redirect(('/PROJO/index.php'));
+    echo '<script type= "text/javascript">';
+    echo 'alert("User Login Successful");';    
+    echo 'window.location.href = "userLand.php";';
+    echo '</script>';
     // encode the data from the database and send it to the javascript frontend
 }
 

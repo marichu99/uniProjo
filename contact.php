@@ -16,31 +16,22 @@
                 <div class="col">
                     <h3 class="title">Product Details</h3>
                     <div class="user">
-                        <label>Product Name</label>
+                        <label>Enter Your Name</label>
                         <input type="text" placeholder="E.g. Names..." name="prodName"/>
                     </div>
                     <div class="user">
-                        <label>Product Description:</label>
-                        <input type="text-area" placeholder="Please type in a description" name="prodDescription"/>
+                        <label>Enter Your Email</label>
+                        <input type="email" placeholder="Please type in a your Email" name="prodDescription"/>
                     </div>
                     <div class="user">
-                        <label>Select Image:</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="prodImg"/>
+                        <label>Message Subject:</label>
+                        <input type="text" placeholder="Please type in the subject" name="prodDescription"/>
                     </div>
                     <div class="user">
-                        <label>Product Price:</label>
-                        <input type="number" placeholder="Enter Price per product" name="prodPrice"/>
+                        <label>Message:</label>
+                        <input type="textarea" placeholder="Please type in the message" name="prodDescription" class="message"/>
                     </div>
-                    <div class="flex">
-                        <div class="user">
-                            <label>Country:</label>
-                            <input type="text" placeholder="Kenya" name="prodCountry"/>
-                        </div>
-                        <div class="user">
-                            <label>Product Location:</label>
-                            <input type="text" placeholder="E.g. New York" name="prodLocation"/>
-                        </div>
-                        
+                    
             </div>
             <input type="submit" value="Submit" class="submit">
         </form>

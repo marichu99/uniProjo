@@ -76,3 +76,34 @@
     background-color: rgb(36, 35, 35);
     transform: scale(0.9);
 }
+.profileHeader{
+    width:630px;
+    height:200px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    gap: 10px;
+    border-radius:10px;
+    background-color:rgb(238, 237, 237);
+}
+i{
+    font-size: larger;
+    margin: 20px;
+}
+.userImage{
+    display: flex;
+    flex-direction: column;
+}
+.userDetails{
+    padding: 10px 14px;
+    margin: 15px;
+}
+.profilePic {
+    margin: 15px;
+    height: 120px;
+}
+.profilePic img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}

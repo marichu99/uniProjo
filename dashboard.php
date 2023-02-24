@@ -37,7 +37,7 @@
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-adjust-circle"></i>
-                            <input type="submit" class="link-name" onclick="" value ="Add Admin" />
+                            <span class="link-name" onclick="window.location.href='adminSignUp.php'" >Add Admin</span>
                         </a></li>
                         <li><a href="#">
                             <i class="uil uil-user-circle"></i>

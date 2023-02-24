@@ -5,6 +5,8 @@
     mysqli_select_db($conn,"farmer");
     $arr_results=array();
     if(isset($_POST["submit"])){
+        // the all variable is used to know whether all products are being queried or not
+        $all=false;
         // search using product name only
         if(isset($_POST["prodName"]) && strlen($_POST["prodLocation"])<1 && strlen($_POST["prodQuantity"])<1){
             $prodName=$_POST["prodName"];
@@ -12,12 +14,9 @@
             $prodName=mysqli_real_escape_string($conn,$prodName);
             $query="select * from products where productName='$prodName'";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodName;
             $numResult=mysqli_num_rows($result);
-            echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
             
         }
@@ -31,12 +30,10 @@
             $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
             $query="select * from products where productName='$prodName' and productLocation like '%$prodLocation%' ";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodName;
             $numResult=mysqli_num_rows($result);
             echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
             
         }
@@ -50,12 +47,9 @@
             $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
             $query="select * from products where productName='$prodName' and productQuantity >='$prodQuantity-10' and productQuantity <='$prodQuantity+10'";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodName;
             $numResult=mysqli_num_rows($result);
-            echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
             
         }
@@ -69,12 +63,9 @@
             $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
             $query="select * from products where productLocation like '%$prodLocation%' and productQuantity='$prodQuantity' ";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodName;
             $numResult=mysqli_num_rows($result);
-            echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
             
         }
@@ -85,12 +76,9 @@
             $prodLocation=mysqli_real_escape_string($conn,$prodLocation);
             $query="select * from products where productLocation like '%$prodLocation%'";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodLocation;
             $numResult=mysqli_num_rows($result);
-            echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
 
         }
@@ -101,18 +89,14 @@
             $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
             $query="select * from products where productQuantity >='$prodQuantity-10' and productQuantity <='$prodQuantity+10'";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-            echo $prodQuantity;
             $numResult=mysqli_num_rows($result);
-            echo $numResult;
             while($rows= mysqli_fetch_assoc ($result)){
                 array_push($arr_results,$rows);
-                print_r($arr_results);
             }
 
         }
         // search using all
         if(isset($_POST["prodName"]) && isset($_POST["prodLocation"]) && isset($_POST["prodQuantity"])){
-            echo "All are set";
             if(strlen($_POST["prodName"])>1 && strlen($_POST["prodLocation"])>1 && strlen($_POST["prodQuantity"])>1){
                 
                 $prodName=$_POST["prodName"];
@@ -125,17 +109,24 @@
                 $prodQuantity=stripcslashes($prodQuantity);
                 $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
                 $query="select * from products where productName='$prodName' and productLocation like '%$prodLocation%' and productQuantity='$prodQuantity' ";
-                $all_products="select * from products";
                 $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
-                echo $prodQuantity;
                 $numResult=mysqli_num_rows($result);
-                echo $numResult;
                 while($rows= mysqli_fetch_assoc ($result)){
                     array_push($arr_results,$rows);
-                    print_r($arr_results);
                 }
             }
         }
+    }else{
+        $all=true;
+        // get all produce from the database
+        $queryAll="select * from products";
+        $resultsAll=mysqli_query($conn,$queryAll) or die(mysqli_error($conn));
+        $numResult=mysqli_num_rows($resultsAll);
+        while($rows=mysqli_fetch_assoc($resultsAll)){
+            array_push($arr_results,$rows);
+        }
+        
+
     }
     
 ?>
@@ -193,11 +184,16 @@
              </div>
             </div>
             <section class="farm_produce">        
-                <h1>Featured Farm Products</h1>
+                <h3>Featured Farm Products</h3>
+                <?php if($all==true){
+                    echo "All produce";
+                }else{
+                    echo $numResult." results found";
+                }?>
                 <div class="prod_row">
                     <?php
                         $iterations=0;
-                        if(isset($result)){
+                        if(isset($result) and $all==false){
                             if($numResult>0){
                             while($iterations<$numResult){
                           
@@ -219,160 +215,34 @@
                     }                     
                     
                     ?>
-                
-                </div>
-                <h2>Search by Location</h2>
-                <div class="prod_row">
-                    <div class="prod_item">
-                        <img src="images/uasin_gishu.jpg" class="image_prod"/><br/>
-                        <span class="prodName">White Maize</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
+
+                    <!-- all products -->
+                    
+                    <?php
+                        $iterations=0;
+                        if(isset($resultsAll) and $all==true){
+                            if($numResult>0){
+                            while($iterations<$numResult){
+                          
+                    ?>
+                    
+                     <div class="prod_item">
+                        <span><?php print_r($rows);?></span>
+                         <img src='images/<?php echo $arr_results[$iterations]["productImg"];?>' class="image_prod"/><br/>
+                         <span class="prodName"><?php echo $arr_results[$iterations]["productName"];?></span><br/>
+                         <span class="prodLocation"><?php echo $arr_results[$iterations]["productLocation"]; ?></span><br/>
+                         <span class="prodPrice"><?php echo $arr_results[$iterations]["productPrice"]."Per Kilogram";?></span><br/>
+                         <div className="fpRating">
                             <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/barley.jpg" class="image_prod"/>
-                        <span class="prodName">Barley</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/rice.jfif" class="image_prod"/>
-                        <span class="prodName">Rice</span><br/>
-                        <span class="prodLocation">Ahero</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/tomato.jpg" class="image_prod"/>
-                        <span class="prodName">Tomato GreenHouse</span><br/>
-                        <span class="prodLocation">Tharaka Nithi</span><br/>
-                        <span class="prodPrice">7,000 Kshs Per Crate</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod_row">
-                    <div class="prod_item">
-                        <img src="images/uasin_gishu.jpg" class="image_prod"/><br/>
-                        <span class="prodName">White Maize</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/barley.jpg" class="image_prod"/>
-                        <span class="prodName">Barley</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/rice.jfif" class="image_prod"/>
-                        <span class="prodName">Rice</span><br/>
-                        <span class="prodLocation">Ahero</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/tomato.jpg" class="image_prod"/>
-                        <span class="prodName">Tomato GreenHouse</span><br/>
-                        <span class="prodLocation">Tharaka Nithi</span><br/>
-                        <span class="prodPrice">7,000 Kshs Per Crate</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod_row">
-                    <div class="prod_item">
-                        <img src="images/uasin_gishu.jpg" class="image_prod"/><br/>
-                        <span class="prodName">White Maize</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/barley.jpg" class="image_prod"/>
-                        <span class="prodName">Barley</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/rice.jfif" class="image_prod"/>
-                        <span class="prodName">Rice</span><br/>
-                        <span class="prodLocation">Ahero</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/tomato.jpg" class="image_prod"/>
-                        <span class="prodName">Tomato GreenHouse</span><br/>
-                        <span class="prodLocation">Tharaka Nithi</span><br/>
-                        <span class="prodPrice">7,000 Kshs Per Crate</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="prod_row">
-                    <div class="prod_item">
-                        <img src="images/uasin_gishu.jpg" class="image_prod"/><br/>
-                        <span class="prodName">White Maize</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/barley.jpg" class="image_prod"/>
-                        <span class="prodName">Barley</span><br/>
-                        <span class="prodLocation">Uasin Gishu</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/rice.jfif" class="image_prod"/>
-                        <span class="prodName">Rice</span><br/>
-                        <span class="prodLocation">Ahero</span><br/>
-                        <span class="prodPrice">50 Shillings Per Kilo</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
-                    <div class="prod_item">
-                        <img src="images/tomato.jpg" class="image_prod"/>
-                        <span class="prodName">Tomato GreenHouse</span><br/>
-                        <span class="prodLocation">Tharaka Nithi</span><br/>
-                        <span class="prodPrice">7,000 Kshs Per Crate</span><br/>
-                        <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
-                        </div>
-                    </div>
+                         </div>
+                     </div>
+                     <?php
+                        $iterations=$iterations+1;
+                            }
+                        }
+                    }                     
+                    
+                    ?>
                 </div>
                 
             </section>        

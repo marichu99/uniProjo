@@ -20,6 +20,7 @@
             <input type="email" id="emailSign" placeholder="Enter your Email address" name="email" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="passwordSign" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="passwordRe" placeholder="Confirm your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
+            <span>Already have an Account?<a href="adminLogin.php">Login</a></span>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
             <?php 
                 if (isset($_GET["error"])){

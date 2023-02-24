@@ -1,4 +1,15 @@
 
+<?php 
+    session_start();
+    $userName=$_SESSION["Username"];
+    $conn=mysqli_connect("localhost","root","");
+    mysqli_select_db($conn,"farmer");
+
+    // check if the farmer is approved to sell
+    $query="select Approved from farmer where farmerName='$userName'";
+    $result=mysqli_query($conn,$query);
+    $rows=mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,46 +21,13 @@
 </head>
 <body>
     <div class="main">
-        <form method="post" action="products.php">
-            <div class="row">
-                <div class="col">
-                    <h3 class="title">Product Details</h3>
-                    <div class="user">
-                        <label>Product Name</label>
-                        <input type="text" placeholder="E.g. Names..." name="prodName"/>
-                    </div>
-                    <div class="user">
-                        <label>Product Description:</label>
-                        <input type="text-area" placeholder="Please type in a description" name="prodDescription"/>
-                    </div>
-                    <div class="user">
-                        <label>Select Image:</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="prodImg"/>
-                    </div>
-                    <div class="user">
-                        <label>Product Price:</label>
-                        <input type="number" placeholder="Enter Price per product" name="prodPrice"/>
-                    </div>
-                    <div class="flex">
-                        <div class="user">
-                            <label>Country:</label>
-                            <input type="text" placeholder="Kenya" name="prodCountry"/>
-                        </div>
-                        <div class="user">
-                            <label>Product Location:</label>
-                            <input type="text" placeholder="E.g. New York" name="prodLocation"/>
-                        </div>
-                        <div class="user">
-                            <label>Product Quantity:</label>
-                            <input type="number" placeholder="E.g. 20..." name="prodQuantity"/>
-                        </div>
-                        
-            </div>
-            <input type="submit" value="Submit" class="submit" name="sell"/>
-        </form>
-        <div class="payDeets">
-
-        </div>
+        <?php 
+            if($rows==="Approved"){
+                include("sellPage.php");
+            }else{
+                include("sellerDetails.php");
+            }
+        ?>
     </div>
     
 </body>

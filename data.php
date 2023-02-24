@@ -69,8 +69,10 @@ if (is_array($row) && $verifyPass ==1 ){
 
    echo $_SESSION["Username"];
    if(isset($_SESSION["Username"])){
-    Redirect("/PROJO/index.php");
-    // echo $_SESSION["Username"];
+    echo '<script type= "text/javascript">';
+    echo 'alert("User Login Successful");';    
+    echo 'window.location.href = "userLand.php";';
+    echo '</script>';
 }
 }else{
     echo '<script type= "text/javascript">';

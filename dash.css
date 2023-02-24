@@ -92,6 +92,7 @@ i{
     border: 1px solid grey;
     height: 35px;
     border-radius: 5px;
+    padding: 8px 14px;
 }
 .input-box{
     outline: none;

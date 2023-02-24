@@ -76,3 +76,6 @@
     background-color: rgb(36, 35, 35);
     transform: scale(0.9);
 }
+input.message{
+    height: 80px;    
+}

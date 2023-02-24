@@ -45,8 +45,15 @@
     // connect to the specific database
     mysqli_select_db($conn,"farmer");
 
+    // get the email of the seller
+    $firstName=$_SESSION["Username"];
 
-    $sql="INSERT INTO products(productName,productDescription,productImg,productLocation,productPrice,prodCountry,productQuantity) VALUES ('$prodName','$prodDescription','$prodImg','$prodLocation','$prodPrice','$prodCountry','$prodQuantity')";
+    $getEmail="select Email from users where FirstName = '$firstName'";
+    $query=mysqli_query($conn,$getEmail) or die(mysqli_error($conn));
+    $farmerID=mysqli_fetch_assoc($query);
+
+
+    $sql="INSERT INTO products(productName,productDescription,productImg,productLocation,productPrice,prodCountry,productQuantity,FarmerID) VALUES ('$prodName','$prodDescription','$prodImg','$prodLocation','$prodPrice','$prodCountry','$prodQuantity','$farmerID')";
 
     $query=mysqli_query($conn,$sql);
 
