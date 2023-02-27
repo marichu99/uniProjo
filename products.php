@@ -30,6 +30,7 @@
         $prodQuantity=stripcslashes($prodQuantity);
     }
     
+    
     // configure a database connection
     $conn=mysqli_connect("localhost","root","");
     
@@ -41,6 +42,9 @@
     $prodPrice=mysqli_real_escape_string($conn,$prodPrice);
     $prodCountry=mysqli_real_escape_string($conn,$prodCountry);
     $prodQuantity=mysqli_real_escape_string($conn,$prodQuantity);
+
+
+    
 
     // connect to the specific database
     mysqli_select_db($conn,"farmer");

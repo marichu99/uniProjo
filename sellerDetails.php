@@ -23,7 +23,7 @@
 </head>
 <body>
     <div class="main">
-        <form action="">
+        <form action="sellerdetail.php" method="POST">
             <div class="row">
                 <div class="col">
                     <h3 class="title">Please Provide us with more details</h3>
@@ -50,13 +50,13 @@
                     <div class="flex">
                         <div class="user">
                             <label>Enter your KRA Pin:</label>
-                            <input type="number" placeholder="AK023ERD234" name="prodQuantity"/>
+                            <input type="text" placeholder="AK023ERD234" name="KRAPin"/>
                         </div>
                     </div>
                 </div>
                 
             </div>
-            <input type="submit" value="submit details" class="submit">
+            <input type="submit" value="submit details" class="submit" name="submit">
         </form>
         <div class="payDeets">
 

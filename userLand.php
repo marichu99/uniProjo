@@ -10,7 +10,8 @@
         <title> Farmer Consumer Linkage Management System </title>
     </head>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <body>
         <div class="banner">
            
@@ -28,7 +29,7 @@
                     <li><a href="Sign.php">My Profile</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="logout.php"><i class="uil uil-signout"> <span>Log Out</span></a></i></li>
+                    <li><a href="logout.php"><i class="uil uil-signout"></a></i></li>
                 </ul>                                                
                 </div>
                 <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>

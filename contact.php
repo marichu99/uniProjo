@@ -11,29 +11,29 @@
 </head>
 <body>
     <div class="main">
-        <form method="post" action="products.php">
+        <form method="post" action="mail.php">
             <div class="row">
                 <div class="col">
                     <h3 class="title">Product Details</h3>
                     <div class="user">
                         <label>Enter Your Name</label>
-                        <input type="text" placeholder="E.g. Names..." name="prodName"/>
+                        <input type="text" placeholder="E.g. Names..." name="Name"/>
                     </div>
                     <div class="user">
                         <label>Enter Your Email</label>
-                        <input type="email" placeholder="Please type in a your Email" name="prodDescription"/>
+                        <input type="email" placeholder="Please type in a your Email" name="Email" required/>
                     </div>
                     <div class="user">
                         <label>Message Subject:</label>
-                        <input type="text" placeholder="Please type in the subject" name="prodDescription"/>
+                        <input type="text" placeholder="Please type in the subject" name="Subject" required/>
                     </div>
                     <div class="user">
                         <label>Message:</label>
-                        <input type="textarea" placeholder="Please type in the message" name="prodDescription" class="message"/>
+                        <input type="textarea" placeholder="Please type in the message" name="Body" class="message" required/>
                     </div>
                     
             </div>
-            <input type="submit" value="Submit" class="submit">
+            <input type="submit" value="Submit" class="submit" name="submit">
         </form>
         <div class="payDeets">
 
