@@ -64,7 +64,7 @@ if (is_array($row) && $verifyPass ==1 ){
     // start a session
     session_start();
 
-    $_SESSION["Username"] = $row["FirstName"];
+    $_SESSION["Username"] = $row["userName"];
     $_SESSION["Password"] = $row["Password"];
 
    echo $_SESSION["Username"];

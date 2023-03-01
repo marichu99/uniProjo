@@ -128,6 +128,11 @@
         
 
     }
+    // // get the product details
+    // if(isset($_POST["getDetails"])){
+    //     $prodID=$arr_results[$iterations]
+    //     redirect("productDetail.php?ID=")
+    // }
     
 ?>
 <!DOCTYPE html>
@@ -204,9 +209,12 @@
                          <span class="prodName"><?php echo $arr_results[$iterations]["productName"];?></span><br/>
                          <span class="prodLocation"><?php echo $arr_results[$iterations]["productLocation"]; ?></span><br/>
                          <span class="prodPrice"><?php echo $arr_results[$iterations]["productPrice"]."Per Kilogram";?></span><br/>
+                         <?php $prodID=$arr_results[$iterations]["productID"];?>
+                         <form method="post" action="">
                          <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
+                            <input type="button" class="prodBuy" onclick="window.location.href='productDetail.php?ID='+<?php echo $prodID;?>" name="getDetails" value="Buy"/>
                          </div>
+                         </form>
                      </div>
                      <?php
                         $iterations=$iterations+1;
@@ -232,9 +240,12 @@
                          <span class="prodName"><?php echo $arr_results[$iterations]["productName"];?></span><br/>
                          <span class="prodLocation"><?php echo $arr_results[$iterations]["productLocation"]; ?></span><br/>
                          <span class="prodPrice"><?php echo $arr_results[$iterations]["productPrice"]."Per Kilogram";?></span><br/>
+                         <?php $prodID=$arr_results[$iterations]["productID"];?>
+                         <form method="post" action="">
                          <div className="fpRating">
-                            <button class="prodBuy">Buy</button>
+                            <input type="button" class="prodBuy" onclick="window.location.href='productDetail.php?ID='+<?php echo $prodID;?>" name="getDetails" value="Buy"/>
                          </div>
+                         </form>
                      </div>
                      <?php
                         $iterations=$iterations+1;

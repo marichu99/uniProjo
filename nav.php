@@ -11,10 +11,7 @@
 <body>
         <nav>
             <div class="navbar" id="navbar">
-                <span><i class="uil uil-user-circle"></i> <?php if (isset($_SESSION["Username"])){
-                                                                    echo $_SESSION["Username"];
-                                                                }else{
-                                                                    echo "Welcome";}?></span>
+                <span><i class="uil uil-user-circle"></i>Welcome</span>
                 <div class="navlinks" id="navLinks">                
                     <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
                 <ul>
@@ -23,7 +20,6 @@
                     <li><a href="Sign.php">Sign Up</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="logout.php"><i class="uil uil-signout"></a></i></li>
                 </ul>                                                
                 </div>
                 <i class="fa fa-bars" onclick="showMenu()" id="bars"></i>

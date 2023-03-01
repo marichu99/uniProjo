@@ -18,9 +18,9 @@
                 <div class="navlinks" id="navLinks">                
                     <i class="fa fa-times" onclick="hideMenu()" id="times"></i>
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="userLand.php">Home</a></li>
                     <li><a href="buy.php">Products</a></li>
-                    <li><a href="Sign.php">My Profile</a></li>
+                    <li><a href="profile.php">My Profile</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="logout.php"><i class="uil uil-signout"></a></i></li>

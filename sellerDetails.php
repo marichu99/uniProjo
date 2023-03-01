@@ -1,13 +1,18 @@
 <?php 
+    
     $conn=mysqli_connect("localhost","root","");
     mysqli_select_db($conn,"farmer");
     if(isset($_SESSION["Username"])){
+        
+        echo "<br/>";
         $userName=$_SESSION["Username"];
     }
     // get the details of the username 
-    $query="select Email,FirstName,LastName from users where FirstName='$userName'";
-    $result=mysqli_query($conn,$query);
+    $query="select Email,FirstName,LastName from users where userName='$userName'";
+    $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
     $rows=mysqli_fetch_assoc($result);
+
+
 ?>
 
 
@@ -23,10 +28,10 @@
 </head>
 <body>
     <div class="main">
-        <form action="sellerdetail.php" method="POST">
+        <form action="sellerdetail.php" enctype="multipart/form-data" method="POST" >
             <div class="row">
                 <div class="col">
-                    <h3 class="title">Please Provide us with more details</h3>
+                    <h3 class="title" onclick="window.location.href='productDetail.php'">Please Provide us with more details</h3>
                     <div class="profileHeader">
                         <div class="userDetails">
                             <h2><?php echo $rows["FirstName"]." ".$rows["LastName"];?></h2>
@@ -41,22 +46,24 @@
                     </div>
                     <div class="user">
                         <label>Enter your ID image</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="IDimage"/>
+                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="IDimage" />
                     </div>
                     <div class="user">
                         <label>Enter your Tax Compliance Certificate</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="Compliance"/>
+                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="Compliance" />
                     </div>
+                    
                     <div class="flex">
                         <div class="user">
                             <label>Enter your KRA Pin:</label>
                             <input type="text" placeholder="AK023ERD234" name="KRAPin"/>
                         </div>
                     </div>
-                </div>
-                
+                </div> 
+                <input type="submit" value="submit details" class="submit" name="submit">
+              
             </div>
-            <input type="submit" value="submit details" class="submit" name="submit">
+        
         </form>
         <div class="payDeets">
 

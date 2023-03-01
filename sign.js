@@ -1,3 +1,5 @@
+        // the below variable is used to set error state in code
+        var truly_valid=true;
         function formValidation(){
         // SIGN UP DATA
         // email Sign Up Text Box
@@ -5,12 +7,18 @@
         console.log(emailSign.value)
         var emailSignValid= document.getElementById("emailSignValid");
         if (emailSign.value.length < 5){
+            error=true;
             emailSignValid.textContent="Please enter an email address"
             emailSignValid.style.color= "red"
             truly_valid= false;
+          }else{
+            truly_valid=true;
           }
         if(emailSign.value.includes("@") === false){
           emailSignValid.textContent="Please include @ in your text"
+          truly_valid=false;
+        }else{
+          truly_valid=true;
         }
           
         // password Sign Up TextBox
@@ -28,9 +36,12 @@
           truly_valid=false;
         // check for special characters
         }else if(passwordSign.value.length > 5 && contAlphaNumeric !== true){
+            truly_valid=false;
             var specialCharacter= document.getElementById("specialCharacter")
             specialCharacter.textContent="Please place numbers in your password"
             specialCharacter.style.color="red";
+        }else{
+          truly_valid=true;
         }
         // confirm password and password
         // get the confirm password object
@@ -42,15 +53,19 @@
             passReValid.textContent="Passwords needs to be 8 characters long"
             passReValid.style.color="red";
             var passRe=document.getElementById("passwordRe")
-            passRe.textContent=" "
+            passRe.textContent=" ";
+            truly_valid=false;
 
         }else{
            if(contains !==0){
+            truly_valid=false;
           passReValid.textContent="Passwords do not match"
           passReValid.style.color="red";
           var passRe=document.getElementById("passwordRe")
           passRe.textContent=" "
-           }
+           }else{
+            truly_valid=true;
+          }
       }
         // first name textbox
         var firstSign= document.getElementById("firstSign");
@@ -60,7 +75,10 @@
             firstSignValid.textContent="Please enter a first name"
             firstSignValid.style.color= "red"
             truly_valid= false;
+          }else{
+            truly_valid=true;
           }
+          // last name textbox
           var lastSign= document.getElementById("lastSign");
           console.log(lastSign.value)
           var lastSignValid= document.getElementById("lastSignValid");
@@ -68,7 +86,19 @@
             lastSignValid.textContent="Please enter a last name"
             lastSignValid.style.color= "red"
             truly_valid= false;
+            }else{
+              truly_valid=true;
             }
+          // username textbox
+          var uname=document.getElementById("username");
+          var unameValid=document.getElementById("userNameValid")
+          if(uname.value.length<5){
+            truly_valid=false;
+            unameValid.textContent="Please enter a longer username";
+            unameValid.style.color="red";
+          }else{
+            truly_valid=true;
+          }
         }
         // functions to remove error messages when users type in their passwords
         function checkFormValidation(e){
@@ -95,6 +125,14 @@
                 document.getElementById("passwordValidation").textContent=""
               }
             }
+          }
+
+          // check if all details are valid then allow the user to submit
+          var submit=document.getElementById("submit")
+          if(truly_valid === false){
+            submit.disabled=true;
+          }else{
+            submit.disabled=false;
           }
   
   

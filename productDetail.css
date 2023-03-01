@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient( rgba(88, 88, 88, 0.2),rgba(182, 180, 180, 0.4));
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding-top: 20px;
     padding-bottom: 10px;
 }
@@ -21,7 +21,7 @@
     background-color: white;
     border-radius: 20px;
     padding: 20px;
-    width: 700px;
+    width: 70%px;
 }
 .main form .row{
     display: flex;
@@ -29,8 +29,11 @@
     gap: 15px;
 }
 .main form .row .col{
-    flex: 1 1 250px;
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
 }
+
 .main form .row .col .title{
     font-size: 20px;
     color: black;
@@ -41,6 +44,8 @@
     display: flex;
     flex-direction: column;
     padding: 5px 12px;
+    object-fit: contain;
+
 }
 .main form .row .col .user label{
     margin-bottom: 5px;
@@ -100,17 +105,29 @@ i{
 }
 .profilePic {
     margin: 15px;
-    height: 120px;
+    height: 350px;
+    border-radius: 10px;
+    margin-top: 0;
+
 }
 .profilePic img{
     height: 100%;
     width: 100%;
     object-fit: contain;
+    margin-top: 0;
 }
-.details{
+.prod_row{
+    margin-top: 5%;
     display: flex;
-    flex-direction: row;
-    gap: 150px;
-    padding-top: 20px;
-
+    justify-content: space-between;
+    padding-bottom: 0;
+    flex-wrap: wrap;
+}
+.prod_item{
+    flex: 1;
+    gap: 10px;
+    padding: 0;
+    margin: 10px;
+    text-align: start;
+    transition: transform .5s;
 }

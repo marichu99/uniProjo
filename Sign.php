@@ -17,9 +17,10 @@
            <h3>Type in your credentials below</h3>
             <input type="text" id="firstSign" placeholder="Enter your First Name" name="fname" class="input-box" required onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="text" id="lastSign" placeholder="Enter your Last Name" name="lname" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
+            <input type="text" id="username" placeholder="Enter your User Name" name="uname" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="email" id="emailSign" placeholder="Enter your Email address" name="email" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="passwordSign" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
-            <input type="password" id="passwordRe" placeholder="Confirm your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
+            <input type="password" id="passwordRe" placeholder="Confirm your password" name="passwordRE" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
             <span><a href="login.php">Login</a></span>
             <?php 
@@ -34,6 +35,7 @@
             <p id="specialCharacter"></p>
             <p id="lastSignValid"></p>
             <p id="emailSignValid"></p>
+            <p id="userNameValid"></p>
             <p id="passwordSignValid"></p>
             <p id="passReValid"></p>           
            </div>
