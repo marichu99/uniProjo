@@ -23,10 +23,10 @@
         $mailer->SMTPAuth=true;
 
         // set up the gamil username
-        $mailer->Username="ukulimabora444@gmail.com";
+        $mailer->Username="ukulimabora@gmail.com";
 
         // set the email password
-        $mailer->Password="yhflmjmxendctsmp";
+        $mailer->Password="iesumgzqhfsjarat";
 
         // set the type of encryption
         $mailer->SMTPSecure="ssl";
@@ -34,7 +34,7 @@
         // set the port to connect to SMTP
         $mailer->Port=465;
         // set the sender email address
-        $mailer->setFrom("ukulimabora444@gmail.com");
+        $mailer->setFrom("ukulimabora44@gmail.com");
 
         $mailer->addAddress($email);
 
@@ -68,10 +68,10 @@
         $mailer->SMTPAuth=true;
 
         // set up the gamil username
-        $mailer->Username="ukulimabora444@gmail.com";
+        $mailer->Username="ukulimabora44@gmail.com";
 
         // set the email password
-        $mailer->Password="yhflmjmxendctsmp";
+        $mailer->Password="iesumgzqhfsjarat";
 
         // set the type of encryption
         $mailer->SMTPSecure="ssl";
@@ -81,9 +81,9 @@
 
         if(isset($_POST["Email"]) and isset($_POST["Body"]) and isset($_POST["Subject"])){
             // set the sender email address
-            $mailer->setFrom("ukulimabora444@gmail.com");
+            $mailer->setFrom("ukulimabora44@gmail.com");
 
-            $mailer->addAddress("ukulimabora444@gmail.com");
+            $mailer->addAddress("ukulimabora44@gmail.com");
 
             $mailer->isHTML(true);
 
@@ -92,6 +92,7 @@
 
             // set the email body
             $mailer->Body=$_POST["Email"].$_POST["Body"];
+            $mailer->SMTPDebug=true;
         }
         // send the email
         $mailer->send();

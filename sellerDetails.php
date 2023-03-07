@@ -46,11 +46,11 @@
                     </div>
                     <div class="user">
                         <label>Enter your ID image</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="IDimage" />
+                        <input type="file" accept="Image/*"  value="Select an Image" name="IDimage" />
                     </div>
                     <div class="user">
                         <label>Enter your Tax Compliance Certificate</label>
-                        <input type="file" accept="Image/*" onchange="readURL(this)" value="Select an Image" name="Compliance" />
+                        <input type="file" accept="Image/*"  value="Select an Image" name="Compliance" />
                     </div>
                     
                     <div class="flex">

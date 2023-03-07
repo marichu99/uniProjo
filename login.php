@@ -19,7 +19,7 @@
             <input type="email" id="email" placeholder="Enter your Email address" name="email" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="password" id="password" placeholder="Enter your password" name="password" required class="input-box" onchange="checkFormValidation(event)" onkeyup="checkFormValidation(event)"><br>
             <input type="submit" id="submit" class="btn-submit" onclick="formValidation()"><br>
-            <p onclick="window.location.href='forgot.html'">Forgot Password</p>
+            <p onclick="window.location.href='forgotPass.php'">Forgot Password</p>
 
             <p id="emailValidation"></p>
             <p id="passwordValidation"></p>

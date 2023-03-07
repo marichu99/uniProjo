@@ -80,10 +80,10 @@
         $mailer->SMTPAuth=true;
 
         // set up the gamil username
-        $mailer->Username="ukulimabora444@gmail.com";
+        $mailer->Username="ukulimabora44@gmail.com";
 
         // set the email password
-        $mailer->Password="yhflmjmxendctsmp";
+        $mailer->Password="iesumgzqhfsjarat";
 
         // set the type of encryption
         $mailer->SMTPSecure="ssl";
@@ -91,7 +91,7 @@
         // set the port to connect to SMTP
         $mailer->Port=465;
         // set the sender email address
-        $mailer->setFrom("ukulimabora444@gmail.com");
+        $mailer->setFrom("ukulimabora44@gmail.com");
 
         $mailer->addAddress($email);
 
@@ -103,6 +103,7 @@
          // set the email body
          $mailer->Body="We have received your various details for review and we will get back to you as soon as possible. Thanks and kind regards";
 
+        $mailer->SMTPDebug=true;
         $mailer->send();
 
         
@@ -128,11 +129,10 @@
             $mailer->SMTPAuth=true;
 
             // set up the gamil username
-            $mailer->Username="ukulimabora444@gmail.com";
+            $mailer->Username="ukulimabora44@gmail.com";
 
             // set the email password
-            $mailer->Password="yhflmjmxendctsmp";
-
+           
             // set the type of encryption
             $mailer->SMTPSecure="ssl";
 
@@ -140,9 +140,9 @@
             $mailer->Port=465;
 
             // set the sender email address
-            $mailer->setFrom("ukulimabora444@gmail.com");
+            $mailer->setFrom("ukulimabora44@gmail.com");
 
-            $mailer->addAddress("ukulimabora444@gmail.com");
+            $mailer->addAddress("ukulimabora44@gmail.com");
     
             
             if(isset($_FILES["IDimage"]) and isset($_FILES["Compliance"])){
@@ -158,9 +158,9 @@
             $mailer->Subject="SUBMISSION OF REQUIRED DOCUMENTS FOR REVIEW";
 
             // set the email body
-            $mailer->Body="Attached herein kindly find my details for your review to expedite the selling process"."      "."The KRA PIN is".$KRAPin;
+            $mailer->Body=$farmerID." Says Attached herein kindly find my details for your review to expedite the selling process"."      "."The KRA PIN is".$KRAPin;
+            $mailer->SMTPDebug=true;
             // send the email
-            $mailer->send();
             if($mailer->send()){
                 $sent=sendToSender($farmerID);           
         

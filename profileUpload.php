@@ -17,7 +17,8 @@
             // insert the details to the database 
             echo "The username is". $userName;
             echo $userIMG;
-            $query="INSERT  INTO users (userIMG)  select '$userIMG' from dual where userName ='$userName' ";
+            // $query="INSERT  INTO users (userIMG)  select '$userIMG' from  where userName ='$userName' ";
+            $query="UPDATE users set userIMG='$userIMG' where userName ='$userName'";
             $result=mysqli_query($conn,$query) or die(mysqli_error($conn));
             $rows=mysqli_affected_rows($conn);
             print_r($rows);
